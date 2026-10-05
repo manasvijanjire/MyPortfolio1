@@ -1,0 +1,929 @@
+/* =====================================================
+                    GLOBAL
+===================================================== */
+
+:root {
+    --dark: #1d1d1b;
+    --cream: #f5f1e8;
+    --cream-light: #faf8f2;
+    --orange: #d86f3d;
+    --orange-light: #e99a70;
+    --text-light: #77736c;
+    --border: #ded8cc;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* =====================================================
+                    NAVBAR
+===================================================== */
+
+.navbar {
+    padding: 24px 0;
+    transition: 0.3s ease;
+    z-index: 1000;
+}
+
+.navbar.scrolled {
+    background: rgba(245, 241, 232, 0.95);
+    backdrop-filter: blur(12px);
+    padding: 15px 0;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-brand {
+    font-family: "Playfair Display", serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.navbar-brand span {
+    color: var(--orange);
+}
+
+.nav-link {
+    color: var(--dark);
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 28px;
+    position: relative;
+    transition: 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--orange);
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: var(--orange);
+    transition: 0.3s;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-contact {
+    display: inline-block;
+    padding: 11px 22px;
+    background: var(--dark);
+    color: white;
+    border-radius: 50px;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.nav-contact:hover {
+    background: var(--orange);
+    color: white;
+}
+
+.navbar-toggler {
+    border: none;
+    font-size: 27px;
+    color: var(--dark);
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+
+/* =====================================================
+                    COMMON
+===================================================== */
+
+.section-number {
+    color: var(--orange);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.section-heading {
+    margin-bottom: 65px;
+}
+
+.section-heading h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(38px, 5vw, 64px);
+    line-height: 1.1;
+    margin-top: 18px;
+    max-width: 700px;
+}
+
+.section-heading h2 span {
+    color: var(--orange);
+    font-style: italic;
+}
+
+
+/* =====================================================
+                    ABOUT HERO
+===================================================== */
+
+.about-hero {
+    min-height: 100vh;
+    padding: 150px 0 100px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.hero-circle {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border: 1px solid rgba(216, 111, 61, 0.2);
+    border-radius: 50%;
+    right: -160px;
+    top: 100px;
+}
+
+.code-decoration {
+    position: absolute;
+    color: rgba(29, 29, 27, 0.07);
+    font-family: monospace;
+    font-weight: 700;
+    pointer-events: none;
+}
+
+.code-one {
+    font-size: 80px;
+    left: 3%;
+    top: 20%;
+    transform: rotate(-10deg);
+}
+
+.code-two {
+    font-size: 100px;
+    right: 5%;
+    bottom: 20%;
+}
+
+.about-photo-area {
+    position: relative;
+    width: 420px;
+    max-width: 100%;
+    margin: auto;
+}
+
+.photo-ring {
+    width: 370px;
+    height: 370px;
+    max-width: 85vw;
+    max-height: 85vw;
+    border-radius: 50%;
+    border: 1px solid var(--orange);
+    padding: 14px;
+    position: relative;
+    margin: auto;
+}
+
+.photo-ring::before {
+    content: "";
+    position: absolute;
+    inset: -14px;
+    border: 1px solid rgba(216, 111, 61, 0.25);
+    border-radius: 50%;
+}
+
+.about-photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+.photo-number {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: var(--dark);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.photo-label {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.photo-label span {
+    font-size: 10px;
+    color: var(--text-light);
+    letter-spacing: 1.5px;
+}
+
+.photo-label strong {
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.floating-tag {
+    position: absolute;
+    padding: 9px 17px;
+    background: white;
+    border: 1px solid var(--border);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.tag-html {
+    left: 0;
+    top: 20%;
+    transform: rotate(-8deg);
+}
+
+.tag-css {
+    right: 0;
+    top: 40%;
+    transform: rotate(7deg);
+}
+
+.tag-js {
+    left: 8%;
+    bottom: 18%;
+    transform: rotate(5deg);
+}
+
+.about-hero-content {
+    padding-left: 35px;
+}
+
+.small-heading {
+    margin-top: 40px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 700;
+}
+
+.about-hero-content h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(65px, 8vw, 105px);
+    line-height: 0.9;
+    margin-bottom: 25px;
+}
+
+.about-hero-content h1 em {
+    color: var(--orange);
+    font-style: italic;
+}
+
+.about-hero-content h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.about-hero-content h2 span {
+    color: var(--orange);
+    margin: 0 7px;
+}
+
+.hero-text {
+    max-width: 580px;
+    color: var(--text-light);
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+.about-buttons {
+    margin-top: 35px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.btn-primary-custom,
+.btn-outline-custom {
+    padding: 14px 25px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-primary-custom {
+    background: var(--dark);
+    color: white;
+}
+
+.btn-primary-custom:hover {
+    background: var(--orange);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.btn-outline-custom {
+    border: 1px solid var(--dark);
+    color: var(--dark);
+}
+
+.btn-outline-custom:hover {
+    background: var(--dark);
+    color: white;
+}
+
+
+/* =====================================================
+                    JOURNEY
+===================================================== */
+
+.journey-section {
+    padding: 120px 0;
+    background: var(--cream-light);
+}
+
+.journey-content {
+    max-width: 720px;
+}
+
+.journey-content p {
+    color: var(--text-light);
+    font-size: 16px;
+    line-height: 1.9;
+    margin-bottom: 22px;
+}
+
+.journey-content .large-text {
+    color: var(--dark);
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+.journey-card {
+    background: var(--dark);
+    color: white;
+    padding: 42px;
+    position: relative;
+    overflow: hidden;
+}
+
+.journey-card::after {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 50%;
+    right: -70px;
+    bottom: -70px;
+}
+
+.journey-card-top {
+    display: flex;
+    justify-content: space-between;
+    color: var(--orange-light);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.journey-card-top i {
+    font-size: 22px;
+}
+
+.journey-card h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 55px;
+    line-height: 0.95;
+    margin: 45px 0 25px;
+}
+
+.journey-card p {
+    color: #b8b5ae;
+    line-height: 1.8;
+}
+
+.status-line {
+    width: 100%;
+    height: 1px;
+    background: #44433f;
+    margin: 30px 0;
+}
+
+.status-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.status-info span {
+    color: var(--orange-light);
+    font-size: 12px;
+}
+
+.status-info strong {
+    font-size: 12px;
+}
+
+
+/* =====================================================
+                    WHAT I DO
+===================================================== */
+
+.what-section {
+    padding: 120px 0;
+    background: var(--cream);
+}
+
+.service-card {
+    background: var(--cream-light);
+    border: 1px solid var(--border);
+    padding: 35px;
+    min-height: 300px;
+    position: relative;
+    transition: 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--orange);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+}
+
+.service-number {
+    font-size: 12px;
+    color: var(--orange);
+    font-weight: 700;
+}
+
+.service-card i {
+    display: block;
+    font-size: 35px;
+    margin: 35px 0 25px;
+}
+
+.service-card h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.service-card p {
+    color: var(--text-light);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+/* =====================================================
+                    TECHNOLOGIES
+===================================================== */
+
+.technology-section {
+    padding: 120px 0;
+    background: var(--cream-light);
+}
+
+.technology-list {
+    border-top: 1px solid var(--border);
+}
+
+.technology-item {
+    display: grid;
+    grid-template-columns: 70px 1fr 150px;
+    align-items: center;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border);
+    transition: 0.3s;
+}
+
+.technology-item:hover {
+    padding-left: 15px;
+    padding-right: 15px;
+    background: var(--cream);
+}
+
+.technology-item > span {
+    color: var(--orange);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.technology-item div {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.technology-item i {
+    font-size: 28px;
+}
+
+.technology-item strong {
+    font-family: "Playfair Display", serif;
+    font-size: 25px;
+}
+
+.technology-item small {
+    color: var(--text-light);
+    text-align: right;
+}
+
+
+/* =====================================================
+                    GOALS
+===================================================== */
+
+.goals-section {
+    padding: 120px 0;
+    background: var(--cream);
+}
+
+.goals-box {
+    background: var(--orange);
+    padding: 65px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.goals-box::after {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 50%;
+    right: -120px;
+    top: -140px;
+}
+
+.goals-box .section-number {
+    color: white;
+}
+
+.goals-box h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(45px, 6vw, 75px);
+    line-height: 1;
+    margin-top: 40px;
+}
+
+.goals-box h2 em {
+    color: var(--dark);
+}
+
+.goals-box p {
+    color: rgba(255,255,255,0.88);
+    line-height: 1.9;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+
+/* =====================================================
+                    CONTACT
+===================================================== */
+
+.contact-section {
+    padding: 140px 0;
+    background: var(--dark);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-decoration {
+    position: absolute;
+    right: 7%;
+    top: 15%;
+    color: rgba(255,255,255,0.05);
+    font-size: 120px;
+    font-family: monospace;
+}
+
+.contact-content {
+    position: relative;
+    z-index: 2;
+}
+
+.contact-content .section-number {
+    color: var(--orange-light);
+}
+
+.contact-content h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(55px, 8vw, 100px);
+    line-height: 0.95;
+    max-width: 800px;
+    margin: 25px 0;
+}
+
+.contact-content h2 em {
+    color: var(--orange-light);
+}
+
+.contact-content > p {
+    color: #aaa69e;
+    max-width: 550px;
+    line-height: 1.8;
+}
+
+.contact-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 35px;
+}
+
+.contact-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 22px;
+    border: 1px solid #44433f;
+    color: white;
+    border-radius: 50px;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.contact-btn:hover {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: white;
+}
+
+
+/* =====================================================
+                    FOOTER
+===================================================== */
+
+footer {
+    background: var(--dark);
+    border-top: 1px solid #3b3a37;
+    color: white;
+    padding: 30px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.footer-logo {
+    color: white;
+    font-family: "Playfair Display", serif;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.footer-logo span {
+    color: var(--orange);
+}
+
+.footer-content p {
+    color: #8e8b84;
+    font-size: 12px;
+    margin: 5px 0 0;
+}
+
+.copyright {
+    margin: 0 !important;
+}
+
+
+/* =====================================================
+                    ANIMATION
+===================================================== */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 0.8s ease,
+                transform 0.8s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* =====================================================
+                    RESPONSIVE
+===================================================== */
+
+@media (max-width: 991px) {
+
+    .navbar {
+        background: rgba(245, 241, 232, 0.96);
+        backdrop-filter: blur(10px);
+    }
+
+    .navbar-nav {
+        padding: 20px 0;
+        align-items: flex-start !important;
+    }
+
+    .nav-link {
+        margin: 8px 0;
+    }
+
+    .nav-contact {
+        margin-top: 10px;
+    }
+
+    .about-hero {
+        padding-top: 150px;
+    }
+
+    .about-photo-area {
+        margin-bottom: 40px;
+    }
+
+    .about-hero-content {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .about-hero-content .section-number {
+        display: block;
+    }
+
+    .about-buttons {
+        justify-content: center;
+    }
+
+    .hero-text {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .section-heading {
+        margin-bottom: 45px;
+    }
+}
+
+
+@media (max-width: 767px) {
+
+    .about-hero {
+        padding: 130px 0 90px;
+    }
+
+    .photo-ring {
+        width: 300px;
+        height: 300px;
+    }
+
+    .photo-label {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .floating-tag {
+        padding: 7px 12px;
+        font-size: 9px;
+    }
+
+    .tag-html {
+        left: 3%;
+    }
+
+    .tag-css {
+        right: 3%;
+    }
+
+    .about-hero-content h1 {
+        font-size: 65px;
+    }
+
+    .journey-section,
+    .what-section,
+    .technology-section,
+    .goals-section {
+        padding: 80px 0;
+    }
+
+    .journey-card {
+        padding: 30px;
+    }
+
+    .journey-card h3 {
+        font-size: 45px;
+    }
+
+    .service-card {
+        min-height: auto;
+    }
+
+    .technology-item {
+        grid-template-columns: 45px 1fr;
+        gap: 10px;
+    }
+
+    .technology-item small {
+        display: none;
+    }
+
+    .technology-item strong {
+        font-size: 21px;
+    }
+
+    .goals-box {
+        padding: 40px 25px;
+    }
+
+    .goals-box h2 {
+        margin-bottom: 35px;
+    }
+
+    .contact-section {
+        padding: 100px 0;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .about-hero-content h1 {
+        font-size: 55px;
+    }
+
+    .about-hero-content h2 {
+        font-size: 16px;
+    }
+
+    .photo-ring {
+        width: 260px;
+        height: 260px;
+    }
+
+    .photo-number {
+        width: 45px;
+        height: 45px;
+        font-size: 11px;
+    }
+
+    .section-heading h2 {
+        font-size: 40px;
+    }
+
+    .technology-item {
+        padding: 22px 0;
+    }
+
+    .contact-content h2 {
+        font-size: 55px;
+    }
+
+}
